@@ -11,11 +11,10 @@ Route::get('/user', function (Request $request) {
 Route::resource('/drzave', \App\Http\Controllers\DrzavaController::class);
 Route::post('/prijava', [\App\Http\Controllers\PrijavaController::class, 'prijava']);
 Route::post('/registracija', [\App\Http\Controllers\PrijavaController::class, 'registracija']);
+Route::get('/putovanja', [\App\Http\Controllers\PutovanjeController::class, 'index']);
 
-//gmora biti autentifikovano
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/odjava', [\App\Http\Controllers\PrijavaController::class, 'odjava']);
-    Route::get('/putovanja', [\App\Http\Controllers\PutovanjeController::class, 'index']);
     Route::get('/putovanja/{id}', [\App\Http\Controllers\PutovanjeController::class, 'show']);
     Route::post('/putovanja', [\App\Http\Controllers\PutovanjeController::class, 'store']);
     Route::put('/putovanja/{id}', [\App\Http\Controllers\PutovanjeController::class, 'update']);

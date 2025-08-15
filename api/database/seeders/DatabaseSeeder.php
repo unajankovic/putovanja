@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
            UserSeeder::class,
            PutovanjeSeeder::class,
            KomentarSeeder::class,
+           SlikeSeeder::class,
        ]);
     }
 }
