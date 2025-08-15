@@ -144,3 +144,19 @@ h1 em {
 .dugme:hover {
     background-color: #a00000;
 }
+
+.kontakt-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  color: #a00000;
+}
+
+.kontakt-info svg {
+  width: 24px;
+  height: 24px;
+  fill: #a00000;
+  margin-right: 10px;
+}
