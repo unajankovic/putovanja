@@ -13,7 +13,7 @@ const Navigacija = () => {
         <>
             <Navbar bg="light" data-bs-theme="light">
                 <Container>
-                    <Navbar.Brand href="/"><Image src={logo} width="120px" height="120px" alt="ZavrstiGlobus" /> </Navbar.Brand>
+                    <Navbar.Brand href="/"><Image className='logo-image' src={logo} width="120px" height="120px" alt="ZavrstiGlobus" /> </Navbar.Brand>
                     <Nav className="me-auto">
                         <Nav.Link href="/">Početna</Nav.Link>
                         <Nav.Link href="/o-nama">O nama</Nav.Link>
@@ -26,6 +26,16 @@ const Navigacija = () => {
                                     {
                                         admin && <Nav.Link href="/admin-strane">Admin</Nav.Link>
                                     }
+
+                                    <Nav.Link href="/odjava" onClick={
+                                        (e) => {
+                                            e.preventDefault();
+                                            window.sessionStorage.removeItem('token');
+                                            window.sessionStorage.removeItem('user');
+                                            window.sessionStorage.removeItem('loggedIn');
+                                            window.location.href = '/';
+                                        }
+                                    }>Odjava</Nav.Link>
                                 </>
                             ) : (
                                 <>
