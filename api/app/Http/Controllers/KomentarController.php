@@ -16,7 +16,7 @@ class KomentarController extends OdgovorController
 
     public function pronadjiPoPutovanju(Request $request, $putovanje_id): \Illuminate\Http\JsonResponse
     {
-        $komentari = Komentar::where('putovanje_id', $putovanje_id)->get();
+        $komentari = Komentar::where('putovanje_id', $putovanje_id)->orderBy('datumKomentara', 'desc')->get();
         return $this->uspesanOdgovor(KomentarResurs::collection($komentari), 'Komentari za putovanje uspesno vraceni');
     }
 
