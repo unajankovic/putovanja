@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\DrzavaResurs;
 use App\Models\Drzava;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class DrzavaController extends OdgovorController
@@ -74,5 +75,16 @@ class DrzavaController extends OdgovorController
         } else {
             return $this->neuspesanOdgovor([], 'Drzava nije pronadjena');
         }
+    }
+
+    public function putovanjaPoDrzavi()
+    {
+        $podaci = DB::table('putovanja')
+            ->join('drzave', 'putovanja.drzava_id', '=', 'drzave.id')
+            ->select('drzave.nazivDrzave', DB::raw('COUNT(putovanja.id) as brojPutovanja'))
+            ->groupBy('drzave.nazivDrzave')
+            ->get();
+
+        return $this->uspesanOdgovor($podaci, 'Broj putovanja po drzavama uspesno vracen');
     }
 }

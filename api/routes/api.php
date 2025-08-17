@@ -12,6 +12,7 @@ Route::resource('/drzave', \App\Http\Controllers\DrzavaController::class);
 Route::post('/prijava', [\App\Http\Controllers\PrijavaController::class, 'prijava']);
 Route::post('/registracija', [\App\Http\Controllers\PrijavaController::class, 'registracija']);
 Route::get('/putovanja', [\App\Http\Controllers\PutovanjeController::class, 'index']);
+Route::get('/grafik', [\App\Http\Controllers\DrzavaController::class, 'putovanjaPoDrzavi']);
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/odjava', [\App\Http\Controllers\PrijavaController::class, 'odjava']);
